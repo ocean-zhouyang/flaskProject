@@ -1,18 +1,18 @@
 from app.models import db
 
 
-class student(db.Model):
+class Student(db.Model):
 
     __tablename__ = "student"
 
-    id = db.Column('student_id', db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    city = db.Column(db.String(50))
-    addr = db.Column(db.String(200))
-    pin = db.Column(db.String(10))
+    id = db.Column('id', db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    age = db.Column(db.Integer)
+    address = db.Column(db.String(10))
+    teacher_id = db.Column(db.Integer)
 
-    def __init__(self, name, city, addr, pin):
+    def __init__(self, name, age, address, teacher_id):
         self.name = name
-        self.city = city
-        self.addr = addr
-        self.pin = pin
+        self.age = age
+        self.address = address
+        self.teacher_id = teacher_id

@@ -1,9 +1,9 @@
 from flask_restplus import Namespace, Resource
 
-teacher_ns = Namespace(name='teacher_ns', description='教师模块')
+tea_ns = Namespace(name='tea_ns', description='教师模块')
 
 
-@teacher_ns.route('/addTeacher')
+@tea_ns.route('/addTeacher')
 class AddTeacher(Resource):
     def post(self):
         """
@@ -12,7 +12,7 @@ class AddTeacher(Resource):
         return "add_Teacher"
 
 
-@teacher_ns.route('/addTeacher1')
+@tea_ns.route('/addTeacher1')
 class AddTeacher1(Resource):
     def get(self):
         """
@@ -20,7 +20,7 @@ class AddTeacher1(Resource):
         return "add_Teacher"
 
 
-@teacher_ns.route('/delTeacher')
+@tea_ns.route('/delTeacher')
 class TeacherDelete(Resource):
     def delete(self):
         """
@@ -29,7 +29,7 @@ class TeacherDelete(Resource):
         return "del_Teacher"
 
 
-@teacher_ns.route('/updateTeacher')
+@tea_ns.route('/updateTeacher')
 class TeacherUpdate(Resource):
     def put(self):
         """
