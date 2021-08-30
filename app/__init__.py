@@ -18,6 +18,8 @@ def create_app():
 	my_app = Flask(__name__)
 
 	# 创建数据库表 有则忽略 无则创建
+	my_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/mytest?charset=utf8'
+	my_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 	metadata.create_all(engine)
 	db.init_app(my_app)
 

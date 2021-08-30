@@ -16,13 +16,45 @@ class CreateStudent(Resource):
         """
         新增学生
         """
-        param = request.json
+        student_forms = request.json
         # student = {'name': param.get('name', None),
         #            'age': int(param.get('age', None)),
         #            'address': param.get('address', None),
         #            'teacher_id': int(param.get('teacher_id', None))}
+        for param in student_forms:
+            student = Student(param.get('name', None), int(param.get('age', None)), param.get('address', None), int(param.get('teacher_id', None)))
+            ProcessStudentDao.insertStudent(student)
 
-        student = Student(param.get('name', None), int(param.get('age', None)), param.get('address', None), int(param.get('teacher_id', None)))
-
-        ProcessStudentDao.insertStudent(student)
         return "add_student"
+
+
+@student_ns.route('/qryStudent')
+class QueryStudent(Resource):
+    def post(self):
+        """
+        学生查询
+        :return:
+        """
+        # return ProcessStudentDao.qryStudent()
+        return ProcessStudentDao.qryStudent2()
+
+
+@student_ns.route('/delStudent/<id>')
+class DeleteStudent(Resource):
+    def post(self, id):
+        """
+        删除学生
+        :return:
+        """
+        return ProcessStudentDao.delStudent(id)
+
+@student_ns.route('/updStudent')
+class UpdateStudent(Resource):
+    @student_ns.expect(create_student_form_model, validate=False)
+    def post(self):
+        """
+        更新学生信息
+        :return:
+        """
+        data = request.json
+        return ProcessStudentDao.updStudent(data)

@@ -7,5 +7,5 @@ create_student_form_model = student_api.model('createStudentFormModel', {
     'name': fields.String(required=True, description='姓名'),
     'age': fields.Integer(required=True, description='年龄'),
     'address': fields.String(required=True, description='地址'),
-    'teacher_id': fields.String(required=False, description='关联教师id')
+    'teacher_id': fields.Integer(required=False, description='关联教师id')
 })
