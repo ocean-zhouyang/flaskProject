@@ -19,6 +19,7 @@ def create_app():
 
 	# 创建数据库表 有则忽略 无则创建
 	my_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost:3306/mytest?charset=utf8'
+	# 禁用事件跟踪系统，防止消耗系统资源
 	my_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 	metadata.create_all(engine)
 	db.init_app(my_app)

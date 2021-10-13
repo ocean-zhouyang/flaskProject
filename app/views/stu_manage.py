@@ -19,6 +19,7 @@ class AddStudent1(Resource):
         """
         return "add_student"
 
+
 @stu_ns.route('/addStudent2')
 class AddStudent2(Resource):
     def head(self):
