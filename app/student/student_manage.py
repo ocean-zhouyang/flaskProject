@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, g, current_app
 
 from app.models.request_params import create_student_form_model
 from app.models.student import Student
@@ -36,6 +36,9 @@ class QueryStudent(Resource):
         :return:
         """
         # return ProcessStudentDao.qryStudent()
+        g.username = 'yyy'
+        g.ip = '192.168.1.2'
+        # print(current_app)
         return ProcessStudentDao.qryStudent2()
 
 

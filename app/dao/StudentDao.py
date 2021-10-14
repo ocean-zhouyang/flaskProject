@@ -1,3 +1,4 @@
+from flask import g
 from sqlalchemy import and_, or_, text, func
 
 from app import db
@@ -42,6 +43,7 @@ class ProcessStudentDao:
 		# and  or
 		# student_list = db.session.query(Student).filter(and_(Student.id > 0, Student.id < 20)).all()
 		# student_list = db.session.query(Student).filter(or_(Student.id < 5, Student.name == '张三')).all()
+		print(g.username)
 		student_list = db.session.query(Student).filter(
 			or_(
 				Student.id < 2,
